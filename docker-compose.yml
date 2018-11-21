@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    gnucash:
+        build:
+            context: gnucash
+            args:
+                - UBUNTU_VERSION=18.04
+        image: gnucash3.3/python
