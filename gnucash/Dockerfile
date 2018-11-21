@@ -2,9 +2,9 @@ ARG UBUNTU_VERSION
 FROM ubuntu:${UBUNTU_VERSION}
 
 ARG ROOT=/root
-ARG SOURCE_DIR=${ROOT}/gnucash-3.3 \
-    BUILD_DIR=${ROOT}/gnucash-3.3-BUILD \
-    INSTALL_DIR=/usr/local
+ARG SOURCE_DIR=${ROOT}/gnucash-3.3
+ARG BUILD_DIR=${ROOT}/gnucash-3.3-BUILD
+ARG INSTALL_DIR=/usr/local
 
 ADD gnucash-3.3.tar.bz2 ${ROOT}/.
 COPY gnucash_core.* ${SOURCE_DIR}/bindings/python/
