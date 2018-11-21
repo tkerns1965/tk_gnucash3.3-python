@@ -38,6 +38,7 @@ RUN apt update && \
         python3-pip \
         python3-setuptools \
         python3-wheel && \
+    rm -rf /var/lib/apt/lists/* && \
     mkdir ${BUILD_DIR} && \
     cd ${BUILD_DIR} && \
     cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} \
@@ -45,9 +46,11 @@ RUN apt update && \
         ${SOURCE_DIR} && \
     make && \
     make install && \
+    apt remove -yq --autoremove \
+        build-essential \
+        cmake && \
     python3 -m pip install \
         fpdf && \
-    rm -rf ${SOURCE_DIR} && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf ${SOURCE_DIR}
 
 ENV PYTHONPATH=/usr/local/lib/python3/dist-packages
