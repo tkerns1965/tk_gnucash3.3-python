@@ -1,11 +1,11 @@
 FROM ubuntu/1804tz
 
-ARG ROOT=/root
-ARG SOURCE_DIR=${ROOT}/gnucash-3.3
-ARG BUILD_DIR=${ROOT}/gnucash-3.3-BUILD
+ARG BASE_DIR=/docker
+ARG SOURCE_DIR=${BASE_DIR}/gnucash-3.3
+ARG BUILD_DIR=${BASE_DIR}/gnucash-3.3-BUILD
 ARG INSTALL_DIR=/usr/local
 
-ADD gnucash-3.3.tar.bz2 ${ROOT}/.
+ADD gnucash-3.3.tar.bz2 ${BASE_DIR}/.
 COPY gnucash_core.* ${SOURCE_DIR}/bindings/python/
 COPY gnc-budget.* ${SOURCE_DIR}/libgnucash/engine/
 COPY qofbook.* ${SOURCE_DIR}/libgnucash/engine/
