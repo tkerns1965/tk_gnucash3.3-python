@@ -1,5 +1,4 @@
-ARG UBUNTU_VERSION
-FROM ubuntu:${UBUNTU_VERSION}
+FROM ubuntu/1804tz
 
 ARG ROOT=/root
 ARG SOURCE_DIR=${ROOT}/gnucash-3.3
@@ -42,7 +41,8 @@ RUN apt update && \
     mkdir ${BUILD_DIR} && \
     cd ${BUILD_DIR} && \
     cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} \
-        -DWITH_AQBANKING=OFF -DWITH_OFX=OFF -DWITH_SQL=OFF -DWITH_PYTHON=ON \
+        -DWITH_GNUCASH=OFF -DWITH_PYTHON=ON \
+        -DWITH_AQBANKING=OFF -DWITH_OFX=OFF -DWITH_SQL=OFF \
         ${SOURCE_DIR} && \
     make && \
     make install && \
