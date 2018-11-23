@@ -41,7 +41,7 @@ RUN apt update && \
     mkdir ${BUILD_DIR} && \
     cd ${BUILD_DIR} && \
     cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} \
-        -DWITH_GNUCASH=OFF -DWITH_PYTHON=ON \
+        -DWITH_GNUCASH=ON -DWITH_PYTHON=ON \
         -DWITH_AQBANKING=OFF -DWITH_OFX=OFF -DWITH_SQL=OFF \
         ${SOURCE_DIR} && \
     make && \
