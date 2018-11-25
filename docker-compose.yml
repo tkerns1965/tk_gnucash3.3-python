@@ -5,3 +5,8 @@ services:
         build:
             context: gnucash
         image: gnucash3.3/python
+        user: "1002:1003"
+        volumes:
+            - /samba/GCF/gnucash_data:/docker/data
+            - /samba/GCF/gnucash_reports/pdf:/docker/pdf
+            - /samba/GCF/gnucash_reports/python:/docker/python
