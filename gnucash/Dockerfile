@@ -54,3 +54,15 @@ RUN apt update && \
     rm -rf ${SOURCE_DIR}
 
 ENV PYTHONPATH=/usr/local/lib/python3/dist-packages
+
+ARG GROUP_GID
+ARG GROUP_NAME
+ARG USER_UID
+ARG USER_NAME
+
+RUN groupadd --gid ${GROUP_GID} ${GROUP_NAME} && \
+    useradd --gid ${GROUP_GID} --uid ${USER_UID} --create-home --shell /bin/bash ${USER_NAME}
+
+ARG HOME_DIR=/home/${USER_NAME}
+
+WORKDIR ${HOME_DIR}
