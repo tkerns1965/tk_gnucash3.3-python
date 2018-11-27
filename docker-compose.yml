@@ -4,8 +4,13 @@ services:
     gnucash:
         build:
             context: gnucash
+            args:
+                - GROUP_GID=${GROUP_GID}
+                - GROUP_NAME=${GROUP_NAME}
+                - USER_UID=${USER_UID}
+                - USER_NAME=${USER_NAME}
         image: gnucash3.3/python
-        user: "1002:1003"
+        user: "${USER_UID}:${GROUP_GID}"
         volumes:
             - /samba/current-docs/GCF/gnucash_data:/docker/data
             - /samba/current-docs/GCF/gnucash_reports/pdf:/docker/pdf
