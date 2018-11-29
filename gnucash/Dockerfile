@@ -6,6 +6,7 @@ ARG BUILD_DIR=${BASE_DIR}/gnucash-3.3-BUILD
 ARG INSTALL_DIR=/usr/local
 
 ADD gnucash-3.3.tar.bz2 ${BASE_DIR}/.
+COPY CMakeLists.txt ${SOURCE_DIR}/
 COPY gnucash_core.* ${SOURCE_DIR}/bindings/python/
 COPY gnc-budget.* ${SOURCE_DIR}/libgnucash/engine/
 COPY qofbook.* ${SOURCE_DIR}/libgnucash/engine/
