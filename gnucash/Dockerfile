@@ -35,6 +35,7 @@ RUN apt update && \
         libgtest-dev \
         google-mock \
         libxml2-utils \
+        swig \
         python3-pip \
         python3-setuptools \
         python3-wheel && \
