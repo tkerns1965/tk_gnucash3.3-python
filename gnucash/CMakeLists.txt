@@ -66,6 +66,9 @@ option (DISABLE_DEPRECATED_GLIB "don't use deprecated glib functions" OFF)
 option (DISABLE_DEPRECATED_GTK "don't use deprecated gtk, gdk or gdk-pixbuf functions" OFF)
 option (DISABLE_DEPRECATED_GNOME "don't use deprecated gnome functions" OFF)
 option (ALLOW_OLD_GETTEXT "allow to configure build with a gettext version older than 0.19.6. Some files will not be translated!" OFF)
+# ************************************************************
+option (FORCE_SWIG "Force swig wrappers generation." OFF)
+# ************************************************************
 # ############################################################
 
 # These are also settable from the command line in a similar way.
@@ -150,7 +153,15 @@ endif()
 
 # Determine whether to generate the swig wrappers.
 # By default they will only be generated when building from a git worktree
-set(GENERATE_SWIG_WRAPPERS ${BUILDING_FROM_VCS} CACHE BOOL "Controls whether to generate the swig wrappers for guile and python. If not set the wrappers will only be generated when building from a git worktree")
+# ************************************************************
+if (FORCE_SWIG)
+# ************************************************************
+  set(GENERATE_SWIG_WRAPPERS "YES")
+# ************************************************************
+else()
+  set(GENERATE_SWIG_WRAPPERS ${BUILDING_FROM_VCS} CACHE BOOL "Controls whether to generate the swig wrappers for guile and python. If not set the wrappers will only be generated when building from a git worktree")
+endif()
+# ************************************************************
 
 if (WIN32)
   # Help Windows find the various dependencies. We assume here that the standard advice for building
