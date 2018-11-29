@@ -6,6 +6,7 @@ ARG BUILD_DIR=${BASE_DIR}/gnucash-3.3-BUILD
 ARG INSTALL_DIR=/usr/local
 
 ADD gnucash-3.3.tar.bz2 ${BASE_DIR}/.
+RUN rm ${SOURCE_DIR}/bindings/python/gnucash_core_c.py
 COPY CMakeLists.txt ${SOURCE_DIR}/
 COPY gnucash_core.* ${SOURCE_DIR}/bindings/python/
 COPY gnc-budget.* ${SOURCE_DIR}/libgnucash/engine/
@@ -43,7 +44,7 @@ RUN apt update && \
     mkdir ${BUILD_DIR} && \
     cd ${BUILD_DIR} && \
     cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} \
-        -DWITH_GNUCASH=ON -DWITH_PYTHON=ON \
+        -DWITH_GNUCASH=ON -DWITH_PYTHON=ON -DFORCE_SWIG=ON \
         -DWITH_AQBANKING=OFF -DWITH_OFX=OFF -DWITH_SQL=OFF \
         ${SOURCE_DIR} && \
     make && \
