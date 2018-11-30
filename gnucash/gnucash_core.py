@@ -735,15 +735,12 @@ Account.name = property( Account.GetName, Account.SetName )
 
 # ***********************************************************************************************
 # GncBudget
-# GncBudget.add_methods_with_prefix('gnc_budget_')
-GncBudget.add_method('gnc_budget_get_name', 'get_name')
-GncBudget.add_method('gnc_budget_set_name', 'set_name')
-GncBudget.add_method('gnc_budget_get_guid', 'get_guid')
-GncBudget.add_method('gnc_budget_get_account_period_value', 'get_account_period_value')
+GncBudget.add_methods_with_prefix('gnc_budget_')
 
 budget_dict =  {
                     'get_guid' : GUID,
-                    'get_account_period_value' : GncNumeric
+                    'get_account_period_value' : GncNumeric,
+                    'get_account_period_actual_value' : GncNumeric
                }
 
 methods_return_instance(GncBudget, budget_dict)
